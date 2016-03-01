@@ -26,7 +26,7 @@ if ( typeof Object.create !== "function" ) {
 			var elem = el;
 			var $elem = $(el);
 			base.$elem = $elem;
-			base.loadContent()
+			base.loadContent();
 		},
 
 		loadContent : function(){
@@ -63,7 +63,7 @@ if ( typeof Object.create !== "function" ) {
 			base.baseClass();
 
 			base.$elem
-			.css({opacity: 0})
+			.css({opacity: 0});
 
 			base.checkTouch();
 			base.eventTypes();
@@ -105,7 +105,7 @@ if ( typeof Object.create !== "function" ) {
 				base.options.autoPlay = 5000;
 			}
 			base.play();
-			base.$elem.find(".owl-wrapper").css("display","block")
+			base.$elem.find(".owl-wrapper").css("display","block");
 
 			if(!base.$elem.is(":visible")){
 				base.watchVisibility();
@@ -151,7 +151,7 @@ if ( typeof Object.create !== "function" ) {
 			var base = this;
 			setTimeout(function(){
 				base.updateVars();
-			},0)
+			},0);
 		},
 
 		watchVisibility : function(){
@@ -213,7 +213,7 @@ if ( typeof Object.create !== "function" ) {
 			var width = $(window).width();
 
 			if(width > (base.options.itemsDesktop[0] || base.orignalItems) ){
-				 base.options.items = base.orignalItems
+				 base.options.items = base.orignalItems;
 			}
 
 			if(width <= base.options.itemsDesktop[0] && base.options.itemsDesktop !== false){
@@ -242,7 +242,7 @@ if ( typeof Object.create !== "function" ) {
 			var base = this,
 				smallDelay;
 			if(base.options.responsive !== true){
-				return false
+				return false;
 			}
 			var lastWindowWidth = $(window).width();
 			$(window).resize(function(){
@@ -256,7 +256,7 @@ if ( typeof Object.create !== "function" ) {
 						base.updateVars();
 					},base.options.responsiveRefreshRate);
 				}
-			})
+			});
 		},
 
 		updatePosition : function(){
@@ -325,14 +325,14 @@ if ( typeof Object.create !== "function" ) {
 
 		calculateWidth : function(){
 			var base = this;
-			base.itemWidth = Math.round(base.$elem.width()/base.options.items)
+			base.itemWidth = Math.round(base.$elem.width()/base.options.items);
 		},
 
 		max : function(){
 			var base = this;
 			base.maximumSlide = base.itemsAmount - base.options.items;
 			var maximum = (base.itemsAmount * base.itemWidth) - base.options.items * base.itemWidth;
-				maximum = maximum * -1
+				maximum = maximum * -1;
 			base.maximumPixels = maximum;
 			return maximum;
 		},
@@ -349,7 +349,7 @@ if ( typeof Object.create !== "function" ) {
 
 			for(var i = 0; i<base.itemsAmount; i++){
 				elWidth += base.itemWidth;
-				base.positionsInArray.push(-elWidth)
+				base.positionsInArray.push(-elWidth);
 			}
 		},
 
@@ -368,7 +368,7 @@ if ( typeof Object.create !== "function" ) {
 
 		buildButtons : function(){
 			var base = this;
-			var buttonsWrapper = $("<div class=\"owl-buttons\"/>")
+			var buttonsWrapper = $("<div class=\"owl-buttons\"/>");
 			base.owlControls.append(buttonsWrapper);
 
 			base.buttonPrev = $("<div/>",{
@@ -392,7 +392,7 @@ if ( typeof Object.create !== "function" ) {
 				} else{
 					base.prev();
 				}
-			})
+			});
 		},
 
 		buildPagination : function(){
@@ -517,14 +517,14 @@ if ( typeof Object.create !== "function" ) {
 		prev : function(speed){
 			var base = this;
 			if(base.options.scrollPerPage === true && base.currentSlide > 0 && base.currentSlide < base.options.items){
-				base.currentSlide = 0
+				base.currentSlide = 0;
 			} else {
 			base.currentSlide -= base.options.scrollPerPage === true ? base.options.items : 1;
 			}
 			if(base.currentSlide < 0){
 				if(base.options.goToFirstNav === true){
 					base.currentSlide = base.maximumSlide;
-					speed = "goToFirst"
+					speed = "goToFirst";
 				} else {
 					base.currentSlide =0;
 					return false;
@@ -681,7 +681,7 @@ if ( typeof Object.create !== "function" ) {
 
 		css2move : function(value){
 			var base = this;
-			base.owlWrapper.css({"left" : value})
+			base.owlWrapper.css({"left" : value});
 		},
 
 		css2slide : function(value,speed){
@@ -711,7 +711,7 @@ if ( typeof Object.create !== "function" ) {
 				var rxTranslate = /translate3d\(0px, 0px, 0px\)/g;
 				var asSupport = eTemp.style.cssText.match(rxTranslate);
 				var bHasSupport = (asSupport !== null && asSupport.length === 1);
-				base.support3d = bHasSupport
+				base.support3d = bHasSupport;
 				return bHasSupport;
 		},
 
@@ -779,7 +779,7 @@ if ( typeof Object.create !== "function" ) {
 				sliding : null,
 				dargging: null,
 				targetElement : null
-			}
+			};
 
 			base.isCssFinish = true;
 
@@ -788,18 +788,18 @@ if ( typeof Object.create !== "function" ) {
 					return {
 						x : event.touches[0].pageX,
 						y : event.touches[0].pageY
-					}
+					};
 				} else {
 					if(event.pageX !== undefined){
 						return {
 							x : event.pageX,
 							y : event.pageY
-						}
+						};
 					} else {
 						return {
 							x : event.clientX,
 							y : event.clientY
-						}
+						};
 					}
 				}
 			}
@@ -828,7 +828,7 @@ if ( typeof Object.create !== "function" ) {
 				}
 
 				if(base.isTouch !== true && !base.owlWrapper.hasClass("grabbing")){
-					base.owlWrapper.addClass("grabbing")
+					base.owlWrapper.addClass("grabbing");
 				}
 
 				base.newPosX = 0;
@@ -871,10 +871,10 @@ if ( typeof Object.create !== "function" ) {
 
 				var minSwipe = function(){
 					return  base.newRelativeX / 5;
-				}
+				};
 				var maxSwipe = function(){
 					return  base.maximumPixels + base.newRelativeX / 5;
-				}
+				};
 
 				base.newPosX = Math.max(Math.min( base.newPosX, minSwipe() ), maxSwipe() );
 				if(base.support3d === true){
@@ -899,7 +899,7 @@ if ( typeof Object.create !== "function" ) {
 					base.goTo(newPosition);
 					if(locals.targetElement === event.target && base.isTouch !== true){
 						$(event.target).on("click.disable", function(ev){
-							ev.stopImmediatePropagation()
+							ev.stopImmediatePropagation();
 							ev.stopPropagation();
 							ev.preventDefault();
 							$(event.target).off("click.disable");
@@ -958,13 +958,13 @@ if ( typeof Object.create !== "function" ) {
 			var base = this,
 				direction;
 			if(base.newRelativeX < 0 ){
-				direction = "right"
-				base.playDirection = "next"
+				direction = "right";
+				base.playDirection = "next";
 			} else {
-				direction = "left"
-				base.playDirection = "prev"
+				direction = "left";
+				base.playDirection = "prev";
 			}
-			return direction
+			return direction;
 		},
 
 		customEvents : function(){

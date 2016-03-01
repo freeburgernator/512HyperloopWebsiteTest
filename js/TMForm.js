@@ -2,15 +2,15 @@
 $(window).load(function(){
 	$('#contact-form').TMForm({
 		recaptchaPublicKey:'6LeZwukSAAAAAG8HbIAE0XeNvCon_cXThgu9afkj'		
-	})
+	});
 })
 
 ;(function($){
 	$.fn.TMForm=function(opt){
-		return this.each(TMForm)
+		return this.each(TMForm);
 		
 		function TMForm(){
-			var form=$(this)
+			var form=$(this);
 			opt=$.extend({	
 					okClass:'ok'
 					,emptyClass:'empty'
@@ -25,16 +25,15 @@ $(window).load(function(){
 					,stripHTML:true
 					,recaptchaPublicKey:''
 					,capchaTheme:'clean'
-				},opt)
-				
-			init()
+				},opt);
+			init();
 			
 			function init(){				
 				form
 					.on('submit',formSubmit)
 					.on('reset',formReset)
 					.on('focus','[data-constraints]',function(){
-						$(this).parents('label').removeClass(opt.emptyClass)
+						$(this).parents('label').removeClass(opt.emptyClass);
 					})
 					.on('blur','[data-constraints]:not(.once-verified)',function(){
 						$(this)
@@ -42,57 +41,57 @@ $(window).load(function(){
 							.trigger('validate.form')
 					})
 					.on('keyup','[data-constraints].once-verified',function(){
-						$(this).trigger('validate.form')
+						$(this).trigger('validate.form');
 					})
 					.on('keydown','input',function(e){
 						var $this=$(this)
-							,next=$this.parents('label').next('label').find('input,textarea')
+							,next=$this.parents('label').next('label').find('input,textarea');
 						if(e.keyCode===13)
 							if(next.length)
-								next.focus()
+								next.focus();
 							else
-								form.submit()
+								form.submit();
 					})
 					.on('keydown','textarea',function(e){
 						if(e.keyCode===13&&e.ctrlKey)
-							$(this).parents('label').next('label').find('input,textarea').focus()
+							$(this).parents('label').next('label').find('input,textarea').focus();
 					})
 					.on('change','input[type="file"]',function(){						
-						$(this).parents('label').next('label').find('input,textarea').focus()
+						$(this).parents('label').next('label').find('input,textarea').focus();
 					})					
 					.attr({
 						method:'POST'
 						,action:opt.mailHandlerURL
-					})
+					});
 				
-				if($('[data-constraints]',form).length!==0)
+				if($('[data-constraints]',form).length!==0) {
 					$('[data-constraints]',form)
 						.regula('bind')
 						.on('show.placeholder',function(){
-							fieldDesolation($(this))
+							fieldDesolation($(this));
 						})
 						.on('validate.form',fieldValidate)
 					
 				
-				$('[placeholder]',form).TMPlaceholder()
+				$('[placeholder]',form).TMPlaceholder();
 				
 				$('[data-type=submit]',form)
 					.click(function(){						
-						form.trigger('submit')
-						return false
+						form.trigger('submit');
+						return false;
 					})
 					
 				$('[data-type=reset]',form)
 					.click(function(){						
-						form.trigger('reset')
-						return false
+						form.trigger('reset');
+						return false;
 					})
 
 				if(opt.stripHTML)
-					form.append('<input type="hidden" name="stripHTML" value="true">')
+					form.append('<input type="hidden" name="stripHTML" value="true">');
 
 				if($('label.recaptcha',form).length!==0&&window.Recaptcha)
-					showRecaptcha()
+					showRecaptcha();
 
 			}
 			
@@ -105,16 +104,16 @@ $(window).load(function(){
 				
 				$.each(result,function(){
 					if(this.constraintName==='Required')
-						isEmpty=true
+						isEmpty=true;
 					else
-						isInvalid=true
+						isInvalid=true;
 				})
 				
 				if(!el.hasClass(opt.onceVerifiedClass)&&!isEmpty)
-					el.addClass(opt.onceVerifiedClass)
+					el.addClass(opt.onceVerifiedClass);
 					
 				if(isEmpty)
-					el.parents('label').addClass(opt.emptyClass)
+					el.parents('label').addClass(opt.emptyClass);
 								
 				if(isInvalid&&!isEmpty&&isRequired)
 					el.parents('label')

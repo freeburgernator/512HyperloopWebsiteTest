@@ -3,16 +3,16 @@
 $(function(){
 	$(".maxheight").each(function(){
 		$(this).contents().wrapAll("<div class='box_inner'></div>");
-	})
+	});
 	$(".maxheight1").each(function(){
 		$(this).contents().wrapAll("<div class='box_inner'></div>");
-	})
+	});
 	$(".maxheight2").each(function(){
 		$(this).contents().wrapAll("<div class='box_inner'></div>");
-	})
-})
+	});
+});
 /*add event*/
-$(window).bind("resize", height_handler).bind("load", height_handler)
+$(window).bind("resize", height_handler).bind("load", height_handler);
 function height_handler(){
 	if($(window).width()>767){
 		$(".maxheight").equalHeights();
@@ -36,10 +36,10 @@ function height_handler(){
 		tallest=(minHeight)?minHeight:0;
 		this.each(function(){
 			if($(">.box_inner", this).outerHeight()>tallest){
-				tallest=$(">.box_inner", this).outerHeight()
+				tallest=$(">.box_inner", this).outerHeight();
 			}
 		});
-		if((maxHeight)&&tallest>maxHeight) tallest=maxHeight;
-		return this.each(function(){$(this).height(tallest)})
+		if((maxHeight)&&tallest>maxHeight) tallest=maxHeight {
+		return this.each(function(){$(this).height(tallest)});
 	}
-})(jQuery)
+});(jQuery);
