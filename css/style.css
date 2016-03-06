@@ -299,7 +299,7 @@ header h1 a {
 
 header h1.logo { /* 512 Hyperloop Logo */
   position: fixed;
-  top: -40px;
+  top: -65px;
   bottom: 0px;
   left: -30px;
   /* Reduce size */
